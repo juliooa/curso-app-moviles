@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">TallerAppsMoviles1</string>
+    <string name="app_name">Taller AppsMoviles1</string>
+    <string name="ingresa_tu_usuario">Ingresa tu email</string>
+    <string name="ingresar">Ingresar</string>
 </resources>

@@ -14,11 +14,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ingresa tu usuario"
-        android:textSize="34sp"/>
+        android:text="@string/ingresa_tu_usuario"
+        style="@style/TextoDestacado" />
 
     <EditText
-        android:layout_width="150dp"
+        android:layout_width="@dimen/ancho_edit_text_usuario"
         android:layout_height="wrap_content"
         android:id="@+id/usuarioEditText" />
 
@@ -26,7 +26,7 @@
         android:id="@+id/buttonEntrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="26sp"
-        android:text="Ingresar"/>
+        android:textSize="@dimen/text_size_texto_boton"
+        android:text="@string/ingresar"/>
 
 </LinearLayout>

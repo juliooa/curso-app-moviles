@@ -8,4 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="TextoDestacado">
+        <item name="android:textColor">@color/rojo_fuerte</item>
+        <item name="android:textSize">@dimen/text_size_texto_destacado</item>
+    </style>
 </resources>

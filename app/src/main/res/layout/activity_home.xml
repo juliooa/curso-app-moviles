@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textiViewBienvenido"
         android:gravity="center_horizontal"
-        android:textSize="32sp"
+        style="@style/TextoDestacado"
         tools:text="Dummy username"/>
 
 </RelativeLayout>

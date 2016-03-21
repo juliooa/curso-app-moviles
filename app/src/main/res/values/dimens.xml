@@ -2,4 +2,12 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- tamaño textos -->
+    <dimen name="text_size_texto_destacado">32sp</dimen>
+    <dimen name="text_size_texto_boton">26sp</dimen>
+
+
+    <dimen name="ancho_edit_text_usuario">150dp</dimen>
+
 </resources>
