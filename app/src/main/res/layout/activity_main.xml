@@ -11,16 +11,16 @@
     android:orientation="vertical"
     android:gravity="center_horizontal|center_vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ingresa_tu_usuario"
-        style="@style/TextoDestacado" />
+   <ImageView
+       android:layout_width="150dp"
+       android:layout_height="150dp"
+       android:src="@drawable/logo_usm"/>
 
     <EditText
         android:layout_width="@dimen/ancho_edit_text_usuario"
         android:layout_height="wrap_content"
-        android:id="@+id/usuarioEditText" />
+        android:id="@+id/usuarioEditText"
+        android:hint="ingrese usuario"/>
 
     <Button
         android:id="@+id/buttonEntrar"
