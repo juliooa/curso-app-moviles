@@ -10,7 +10,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="Inicio">
+            android:label="Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,7 +19,7 @@
         </activity>
         <activity
             android:name=".HomeActivity"
-            android:label="Home" />
+            android:label="Menu" />
         <activity
             android:name=".InscripcionActivity"
             android:label="Inscribir ramos" />

@@ -34,7 +34,7 @@ public class HomeActivity extends AppCompatActivity {
         TextView textViewNombreUsuario =
                 (TextView) findViewById(R.id.textViewBienvenida);
 
-        textViewNombreUsuario.setText("Bienvenido: " + nombreUsuario);
+        textViewNombreUsuario.setText("Hola " + nombreUsuario);
 
         setListViewOpciones();
     }

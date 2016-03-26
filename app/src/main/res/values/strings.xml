@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Taller AppsMoviles1</string>
-    <string name="ingresa_tu_usuario">Ingresa tu email</string>
+    <string name="ingresa_tu_usuario">Ingresa tu usuario</string>
     <string name="ingresar">Ingresar</string>
+    <string name="siga">Sistema de Información de Gestión Académica</string>
+    <string name="usuario">usuario</string>
+    <string name="elige_tu_certificado">Elige tu certificado</string>
+
 </resources>

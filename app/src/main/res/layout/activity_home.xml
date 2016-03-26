@@ -5,18 +5,27 @@
     android:layout_height="match_parent"
     tools:context="cl.usm.tallerappsmoviles1.HomeActivity">
 
+   <ImageView
+       android:id="@+id/imageViewMenu"
+       android:layout_width="match_parent"
+       android:layout_height="@dimen/menu_image_height"
+       android:scaleType="centerCrop"
+       android:src="@drawable/usm_campus"/>
+
     <TextView
         android:id="@+id/textViewBienvenida"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="20dp"
-        android:gravity="center_horizontal"
-        android:text="Bienvenido Usuario"
-        android:textSize="25sp"/>
+        android:layout_alignBottom="@+id/imageViewMenu"
+        android:gravity="end"
+        android:layout_marginRight="@dimen/menu_image_text_margin_right"
+        android:layout_marginBottom="@dimen/menu_image_text_margin_bottom"
+        tools:text="Bienvenido Usuario"
+        android:textSize="@dimen/menu_image_text_size"
+        android:textColor="@color/white"/>
 
     <ListView
-        android:layout_below="@+id/textViewBienvenida"
+        android:layout_below="@+id/imageViewMenu"
         android:id="@+id/listViewOpciones"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

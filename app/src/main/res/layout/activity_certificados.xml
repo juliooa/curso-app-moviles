@@ -13,10 +13,10 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Elige tu certificado"/>
+        android:text="@string/elige_tu_certificado"/>
 
     <Spinner
         android:id="@+id/spinnerCertificados"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"></Spinner>
+        android:layout_height="wrap_content" />
 </LinearLayout>

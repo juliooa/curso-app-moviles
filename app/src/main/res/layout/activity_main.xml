@@ -3,30 +3,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="cl.usm.tallerappsmoviles1.MainActivity"
-    android:orientation="vertical"
-    android:gravity="center_horizontal|center_vertical">
+    tools:context="cl.usm.tallerappsmoviles1.MainActivity">
 
-   <ImageView
-       android:layout_width="150dp"
-       android:layout_height="150dp"
-       android:src="@drawable/logo_usm"/>
+    <ImageView
+        android:layout_width="@dimen/login_usm_logo_width"
+        android:layout_height="@dimen/login_usm_logo_height"
+        android:src="@drawable/logo_usm" />
+
+    <TextView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="@string/siga"
+        android:textSize="@dimen/login_siga_textsize" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/login_usuario_margin_top"
+        android:gravity="start"
+        android:text="@string/usuario"
+        android:textSize="@dimen/login_usuario_textsize" />
 
     <EditText
-        android:layout_width="@dimen/ancho_edit_text_usuario"
-        android:layout_height="wrap_content"
         android:id="@+id/usuarioEditText"
-        android:hint="ingrese usuario"/>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
     <Button
         android:id="@+id/buttonEntrar"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_size_texto_boton"
-        android:text="@string/ingresar"/>
+        android:layout_marginTop="@dimen/login_button_margin_top"
+        android:background="@color/calipso"
+        android:padding="@dimen/login_button_padding"
+        android:text="@string/ingresar"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/login_button_textsize" />
 
 </LinearLayout>
