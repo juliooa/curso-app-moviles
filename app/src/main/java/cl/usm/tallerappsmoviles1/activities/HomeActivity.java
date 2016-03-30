@@ -1,4 +1,4 @@
-package cl.usm.tallerappsmoviles1;
+package cl.usm.tallerappsmoviles1.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import javax.net.ssl.CertPathTrustManagerParameters;
+import cl.usm.tallerappsmoviles1.R;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -23,6 +23,8 @@ public class HomeActivity extends AppCompatActivity {
 
     private static final int OPCION_INSCRIPCION = 1;
     private static final int OPCION_CERTIFICADOS = 2;
+    private static final int OPCION_FICHA_PERSONAL = 3;
+    private static final int OPCION_RESUMEN_ACADEMICO = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +70,17 @@ public class HomeActivity extends AppCompatActivity {
                                 CertificadosActivity.class);
                         startActivity(intent);
                         break;
+                    case OPCION_FICHA_PERSONAL:
+                        intent = new Intent(HomeActivity.this,
+                                FichaPersonalActivity.class);
+                        startActivity(intent);
+                        break;
+                    case OPCION_RESUMEN_ACADEMICO:
+                        intent = new Intent(HomeActivity.this,
+                                ResumenAcademicoActivity.class);
+                        startActivity(intent);
+                        break;
+
                 }
             }
         });

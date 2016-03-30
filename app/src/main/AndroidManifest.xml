@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:label="Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,12 +18,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeActivity"
+            android:name=".activities.HomeActivity"
             android:label="Menu" />
         <activity
-            android:name=".InscripcionActivity"
+            android:name=".activities.InscripcionActivity"
             android:label="Inscribir ramos" />
-        <activity android:label="Certificados" android:name=".CertificadosActivity"/>
+        <activity
+            android:name=".activities.CertificadosActivity"
+            android:label="Certificados" />
+        <activity
+            android:name=".activities.FichaPersonalActivity"
+            android:label="Ficha Personal" />
+        <activity
+            android:label="Resumen Académico" android:name=".activities.ResumenAcademicoActivity" />
     </application>
 
 </manifest>

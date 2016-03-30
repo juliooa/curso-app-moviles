@@ -1,9 +1,11 @@
-package cl.usm.tallerappsmoviles1;
+package cl.usm.tallerappsmoviles1.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import cl.usm.tallerappsmoviles1.R;
 
 public class CertificadosActivity extends AppCompatActivity {
 

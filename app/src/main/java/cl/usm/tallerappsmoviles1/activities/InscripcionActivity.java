@@ -1,4 +1,4 @@
-package cl.usm.tallerappsmoviles1;
+package cl.usm.tallerappsmoviles1.activities;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import cl.usm.tallerappsmoviles1.R;
 
 public class InscripcionActivity extends AppCompatActivity {
 
