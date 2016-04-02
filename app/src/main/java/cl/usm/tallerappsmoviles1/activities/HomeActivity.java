@@ -13,14 +13,15 @@ import cl.usm.tallerappsmoviles1.R;
 
 public class HomeActivity extends AppCompatActivity {
 
-    String[] opciones = { "Horario personal",
+    String[] opciones = {
+            "Mis ramos",
             "Inscripción",
             "Certificados",
             "Ficha personal",
             "Resumen académico", "Encuesta docente"
             , "Planes de Carrera","Deuda","Avance Curricular"};
 
-
+    private static final int OPCION_MIS_RAMOS = 0;
     private static final int OPCION_INSCRIPCION = 1;
     private static final int OPCION_CERTIFICADOS = 2;
     private static final int OPCION_FICHA_PERSONAL = 3;
@@ -47,7 +48,7 @@ public class HomeActivity extends AppCompatActivity {
 
         ArrayAdapter<String> adapterOpciones =
                 new ArrayAdapter<String>(this,
-                        android.R.layout.simple_list_item_1,
+                        R.layout.fila_menu,
                         opciones);
 
         listViewOpciones.setAdapter(adapterOpciones);
@@ -60,6 +61,11 @@ public class HomeActivity extends AppCompatActivity {
                 Intent intent;
 
                 switch (position){
+                    case OPCION_MIS_RAMOS:
+                        intent = new Intent(HomeActivity.this,
+                                MisRamosActivity.class);
+                        startActivity(intent);
+                        break;
                     case OPCION_INSCRIPCION:
                         intent = new Intent(HomeActivity.this,
                                 InscripcionActivity.class);

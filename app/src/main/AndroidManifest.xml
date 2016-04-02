@@ -30,7 +30,11 @@
             android:name=".activities.FichaPersonalActivity"
             android:label="Ficha Personal" />
         <activity
-            android:label="Resumen Académico" android:name=".activities.ResumenAcademicoActivity" />
+            android:name=".activities.ResumenAcademicoActivity"
+            android:label="Resumen Académico" />
+
+        <activity android:label="Mis Ramos"
+            android:name=".activities.MisRamosActivity"/>
     </application>
 
 </manifest>
