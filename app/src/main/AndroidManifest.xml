@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cl.usm.tallerappsmoviles1">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -32,9 +35,10 @@
         <activity
             android:name=".activities.ResumenAcademicoActivity"
             android:label="Resumen Académico" />
-
-        <activity android:label="Mis Ramos"
-            android:name=".activities.MisRamosActivity"/>
+        <activity
+            android:name=".activities.MisRamosActivity"
+            android:label="Mis Ramos" />
+        <activity android:name=".activities.MapaSalaActivity"></activity>
     </application>
 
 </manifest>
