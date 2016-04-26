@@ -3,6 +3,7 @@ package cl.usm.tallerappsmoviles1.activities;
 import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.os.BatteryManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -16,6 +17,14 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import cl.usm.tallerappsmoviles1.R;
 
@@ -24,13 +33,15 @@ public class MapaSalaActivity extends AppCompatActivity implements
         GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener,
         ActivityCompat.OnRequestPermissionsResultCallback,
-        LocationListener {
+        LocationListener, OnMapReadyCallback {
 
     private GoogleApiClient googleApiClient;
     private TextView textViewUbicacion;
     private static final int MY_PERMISSIONS_REQUEST = 1;
     private LocationRequest locationRequest;
     private Location ultimaUbicacion;
+    private GoogleMap map;
+    private Marker marker;
 
     @Override
     protected void onStart() {
@@ -58,6 +69,10 @@ public class MapaSalaActivity extends AppCompatActivity implements
 
         textViewUbicacion = (TextView)findViewById(R.id.textViewUbicacion);
 
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
+
         iniciarGooglePlayServicesApiClient();
         crearLocationRequest();
     }
@@ -66,7 +81,7 @@ public class MapaSalaActivity extends AppCompatActivity implements
         locationRequest = new LocationRequest();
         locationRequest.setInterval(10000);
         locationRequest.setFastestInterval(5000);
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+        locationRequest.setPriority(LocationRequest.PRIORITY_LOW_POWER);
     }
 
 
@@ -146,6 +161,7 @@ public class MapaSalaActivity extends AppCompatActivity implements
     public void onLocationChanged(Location location) {
 
         ultimaUbicacion = location;
+        pinMiUbicacion();
         updateUI();
     }
 
@@ -154,11 +170,50 @@ public class MapaSalaActivity extends AppCompatActivity implements
         if (ultimaUbicacion == null) {
             textViewUbicacion.setText("no existe ultima ubicación");
         } else {
-            String oldStatus = textViewUbicacion.getText().toString();
             String newStatus = "" +ultimaUbicacion.getLatitude() +
                     ", " + ultimaUbicacion.getLongitude();
 
-            textViewUbicacion.setText(oldStatus + "\n" + newStatus);
+            textViewUbicacion.setText(newStatus);
         }
     }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+        map = googleMap;
+
+        pinUSM();
+    }
+
+    private void pinMiUbicacion() {
+
+        LatLng miUbicacion = new LatLng(ultimaUbicacion.getLatitude(), ultimaUbicacion.getLongitude());
+
+        if(marker == null){
+            MarkerOptions markerOptions = new MarkerOptions();
+            markerOptions.position(miUbicacion);
+            markerOptions.title("Mi ubicación");
+            marker = map.addMarker(markerOptions);
+        }
+        marker.setPosition(miUbicacion);
+            //marker.remove();
+        //map.addMarker(markerOptions);
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(miUbicacion, 20));
+    }
+
+    private void pinUSM() {
+
+        LatLng salaGeo = new LatLng(-33.4906276, -70.6196929);
+
+        MarkerOptions markerOptions = new MarkerOptions()
+                .position(salaGeo)
+                .title("Sala B-003")
+                .icon(BitmapDescriptorFactory.
+                        defaultMarker(BitmapDescriptorFactory.HUE_AZURE));
+
+        map.addMarker(markerOptions);
+
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(salaGeo, 15));
+    }
+
 }
