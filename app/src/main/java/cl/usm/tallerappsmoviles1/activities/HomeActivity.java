@@ -26,6 +26,7 @@ public class HomeActivity extends AppCompatActivity {
     private static final int OPCION_CERTIFICADOS = 2;
     private static final int OPCION_FICHA_PERSONAL = 3;
     private static final int OPCION_RESUMEN_ACADEMICO = 4;
+    private static final int OPCION_ENCUESTA_DOCENTE = 5;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +85,11 @@ public class HomeActivity extends AppCompatActivity {
                     case OPCION_RESUMEN_ACADEMICO:
                         intent = new Intent(HomeActivity.this,
                                 ResumenAcademicoActivity.class);
+                        startActivity(intent);
+                        break;
+                    case OPCION_ENCUESTA_DOCENTE:
+                        intent = new Intent(HomeActivity.this,
+                                EncuestaDocenteActivity.class);
                         startActivity(intent);
                         break;
 
