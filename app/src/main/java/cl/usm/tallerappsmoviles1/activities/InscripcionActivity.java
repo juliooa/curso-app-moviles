@@ -25,15 +25,18 @@ import java.util.ArrayList;
 import cl.usm.tallerappsmoviles1.R;
 import cl.usm.tallerappsmoviles1.model.Ramo;
 import cl.usm.tallerappsmoviles1.model.RamosDTO;
+import cl.usm.tallerappsmoviles1.network.BackEndAPI;
+import cl.usm.tallerappsmoviles1.network.BackEndClient;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
-public class InscripcionActivity extends AppCompatActivity {
+
+public class InscripcionActivity extends AppCompatActivity implements Callback<RamosDTO> {
 
     private static final String getCursosURL = "http://wearenicecorp.com/apps/siga_app/cursos.php";
 
-    //String[] ramos = { "Quimica",
-      //      "Mate I",
-        //    "Fisica",
-          //  "Progra <3"};
     ArrayList<Ramo> ramos = new ArrayList<>();
     private CursosAdapter cursosAdapter;
 
@@ -47,8 +50,31 @@ public class InscripcionActivity extends AppCompatActivity {
         cursosAdapter = new CursosAdapter();
         listViewRamos.setAdapter(cursosAdapter);
 
-        GetRamosAsync getRamosAsync = new GetRamosAsync();
-        getRamosAsync.execute();
+        getRamos();
+    }
+
+    public void getRamos(){
+
+        //Se hacen los llamados al webservice
+        Retrofit retrofit = BackEndClient.getClient();
+        BackEndAPI backEndAPI = retrofit.create(BackEndAPI.class);
+        Call<RamosDTO> call = backEndAPI.getCursos();
+        call.enqueue(this);
+    }
+
+    @Override
+    public void onResponse(Call<RamosDTO> call, Response<RamosDTO> response) {
+
+        if(response.isSuccessful()){
+            ramos.addAll(response.body().getRamos());
+            cursosAdapter.notifyDataSetChanged();
+        }
+
+    }
+
+    @Override
+    public void onFailure(Call<RamosDTO> call, Throwable t) {
+
     }
 
     private class CursosAdapter extends BaseAdapter {
@@ -84,40 +110,5 @@ public class InscripcionActivity extends AppCompatActivity {
 
             return row;
         }
-    }
-
-    private class GetRamosAsync extends AsyncTask<String, Integer, ArrayList<Ramo>>{
-
-        @Override
-        protected ArrayList<Ramo> doInBackground(String... strings) {
-            //ejecución en background
-            try {
-                HttpURLConnection httpURLConnection =
-                        (HttpURLConnection)new URL(getCursosURL).openConnection();
-
-
-                InputStream in = httpURLConnection.getInputStream();
-                BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-
-                RamosDTO ramosObtenidos = new Gson().fromJson(reader, RamosDTO.class);
-                reader.close();
-
-                return ramosObtenidos.getRamos();
-
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(ArrayList<Ramo> ramosObtenidos) {
-            super.onPostExecute(ramosObtenidos);
-
-            ramos.addAll(ramosObtenidos);
-            cursosAdapter.notifyDataSetChanged();
-        }
-
     }
 }
